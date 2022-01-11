@@ -1,0 +1,57 @@
+﻿@model Sequencing.WeatherApp.Models.CommonData
+
+@{
+    ViewBag.Title = "Weather My Way +RTP";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<script src="/Scripts/jquery.simpleWeather.min.js"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+<script src="/assets/js/vidRandom.js"></script>
+
+
+
+
+<div id="titleText">
+    <h3 id="titleOne">
+        Weather My Way
+    </h3>
+    <h4 id="subTitle">with Real-Time Personalization<sup id="tm">TM</sup></h4>
+</div>
+<div id="loginContainer">
+    <a href="@Url.Action(!Model.Context.IsAuthenticated ? "StartAuth" : "StartJobSequence")" class="btn">
+        <img id="login" src="/assets/img/Sign_in_with_Sequencing_com_SSO_button_slate.png" />
+    </a><br />
+</div>
+<div id="regBox">
+    <p>
+        Don't have a Sequencing.com account?<br/>
+        <a id="regLink" href="https://sequencing.com/user/register/">Register for a free account</a>
+    </p>
+</div>
+
+<div id="aboutButton"><b>About</b></div>
+<div id="marketButtons">
+    <a href="https://geo.itunes.apple.com/us/app/weather-my-way-+rtp/id1116797084?mt=8" class="btn">
+        <img id="apple" src="/assets/img/Apple-App-Store-SequencingCom-Genomics-Real-Time-Personalization-RTP.png" height="50" width="100" />
+    </a>
+    <a href="https://play.google.com/store/apps/details?id=com.sequencing.weather" class="btn">
+        <img id="android" src="/assets/img/Android-App-Google-Play-Sequencing-Com-Real-Time-Personalization-RTP.png" height="50" width="100" />
+    </a>
+</div>
+
+<style>
+    #aboutWindow 
+    {
+    background-color:rgba(210, 210, 210, 0.8);
+    }
+    #marketButtons {
+	position:absolute;
+	width:auto;
+	left:25%;
+	top:52%;
+	right:25%;
+	bottom:42%;
+	text-align:center;
+}
+</style>
