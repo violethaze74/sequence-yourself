@@ -1,0 +1,33 @@
+﻿@model Sequencing.WeatherApp.Models.CheckAppData
+
+@{
+    ViewBag.Title = "Please wait... this app is now being personalized to you based upon your genes.";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<div>
+    <script>
+        function checkApp() {
+            $.ajax({
+                url: '@Html.Raw(Url.Action("StartJob", "Default", new { selectedId = Model.selectedId }))',
+                contentType: 'application/json',
+                method: "GET",
+                success: function (data) {
+                    var result = JSON.parse(data);
+                    if (result.melanomaRisk != null)
+                        window.location.replace('/Default/Results/?melanomaRisk=' + result.melanomaRisk + '&vitD=' + result.vitD);
+                }
+            });
+ 
+        };
+
+        $(function () {
+            checkApp();
+        });
+    </script>
+    <div id="preloader">
+        <b>Please wait... <br/>This app is now being personalized to you based upon your genes.</b><br/>
+    </div>
+        <img id="spinner" src="/assets/img/Awesome-cub-pre-loader-Sequencing-com-128px.gif" />
+
+</div>
